@@ -1,16 +1,43 @@
-import {pageLoader} from "./loader"
 import background from "./burger.jpg"
-import {domManipulator} from "./dom"
+import {
+    domManipulator
+} from "./dom"
 
-let updateHome = function() {
+let updateHome = function () {
 
-    let content = document.querySelector("#content"); 
-    content.style.backgroundImage = `url(${background})`;
-    let main = domManipulator.getMain();
-    console.log(main);
-    main.firstChild.innerText = "Life's too short for boring food" + "\n" + 
-    "Come and see what you have been missing..."
+    let setHomeBackground = function () {
 
-}
+        domManipulator.getBody().style.backgroundImage = `url(${background})`;
+    }
 
-export {updateHome};
+    let setHomeContent = function () {          
+
+        let main = domManipulator.createDiv("main");
+        main.appendChild(domManipulator.createDiv("mainContent"));
+        domManipulator.getContent().append(main);
+
+        console.log("oim at home!")
+     
+
+        setTimeout(function(){main.classList.add("opacity");}, 0);  
+
+        setTimeout(function(){main.addEventListener("transitionend", () => {
+            main.innerText = "Life's too short for boring food" + "\n" +
+            "Come and see what you have been missing..."
+            main.classList.remove("opacity");
+          })}, 0);      
+
+        setHomeBackground();
+    }
+
+    return {
+        setHomeBackground,
+        setHomeContent
+    };
+
+}()
+
+export {
+    updateHome
+};
+

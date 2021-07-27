@@ -1,34 +1,88 @@
-let domManipulator = function() {   
+let domManipulator = function () {
 
     let currentTab = "home";
+    let content = document.querySelector("#content");
+    let header = document.createElement("div");
+    header.id = "header";
+    let tabs = document.createElement("div");
+    tabs.id = "tabs";  
+  
 
-    let getMain = function() {    
+    let getBody = function() {
 
-        return document.querySelector("#main");
+        return document.body;
     }
 
-    let setCurrentTab = function(tab) {
+    
+
+    
+    let getMain = function () {
+
+        return main;
+    }
+
+    let getTabs = function () {
+
+        return tabs;
+    }
+
+    let setCurrentTab = function (tab) {
 
         currentTab = tab;
     }
 
-    let getCurrentTab = function() {
+    let getCurrentTab = function () {
 
         return currentTab;
     }
 
+    let getContent = function () {
 
+        return content;
+    }
 
-    let createDiv = function(id) {
+    let getHeader = function () {
+
+        return header;
+    }
+
+    let createDiv = function (id) {
 
         let newDiv = document.createElement("div");
+        console.log("generating div");
         newDiv.id = id;
+        console.log(newDiv)
         return newDiv;
 
     }
 
-    return {createDiv, getMain, setCurrentTab, getCurrentTab};
+    let removeAllNodes = function() {
+
+        let nodes = getContent().childNodes;
+
+        nodes.forEach((node => {
+            console.log(node);
+            if(node.id != "header") {
+
+                getContent().removeChild(node);
+            }
+        }))     
+    }
+
+    return {
+        createDiv,
+        getMain,
+        setCurrentTab,
+        getCurrentTab,
+        getContent,
+        getHeader,
+        getTabs,
+        removeAllNodes,
+        getBody
+    };
 
 }()
 
-export {domManipulator};
+export {
+    domManipulator
+};

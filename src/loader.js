@@ -1,17 +1,15 @@
 import { domManipulator } from "./dom"; 
 import background from "./burger.jpg";
 import "./style.css"
+import { updateHome } from "./home";
 
-const pageLoader = function() {
+const pageLoader = function() {  
 
-    console.log("im here");
-
-    let content = document.querySelector("#content"); 
-    content.style.backgroundImage = `url(${background})`;
-    let header = domManipulator.createDiv("header");
-    content.append(header);    
-    let tabs = domManipulator.createDiv("tabs");  
-    header.append(tabs);
+    updateHome.setHomeBackground();
+    let header = domManipulator.getHeader();
+    domManipulator.getContent().append(header);    
+    let tabs = domManipulator.getTabs(); 
+    header.append(tabs);   
 
     let tabTitles = ["Home", "Gallery", "About"];
 
@@ -23,16 +21,12 @@ const pageLoader = function() {
         innerTab.id = tabTitles[x]; 
         tabs.append(innerTab);
 
-    }
+    }    
 
-    let main = domManipulator.createDiv("main");  
-    main.appendChild(domManipulator.createDiv("mainContent"));
-    content.append(main);
-    main.classList.add("mainHome"); //this is added for homepage
-    let mainContent = document.querySelector("#mainContent");
-    mainContent.innerText = "Life's too short for boring food" + "\n" + 
-    "Come and see what you have been missing..."
-
+    updateHome.setHomeContent();
+    
+    
+    
 }()
 
 

@@ -5,33 +5,38 @@ import {updateGallery} from "./gallery"
 import {updateAbout} from "./about"
 import {domManipulator} from "./dom"
 
-pageLoader;
-
 const tabLogic = function() {
 
     let tabFunctions = {
 
-        "home": updateHome,
+        "home": updateHome.setHomeContent,
         "gallery": updateGallery,
         "about": updateAbout,
-
     }
 
-    let tabs = document.querySelector("#tabs");
-    tabs.addEventListener("click", getContent);
+  
+    domManipulator.getTabs().addEventListener("click", tabChange);
 
-    function getContent(e) {
+    function tabChange(e) {
 
-        if(e.target.innerText != domManipulator.getCurrentTab()) {
+        //stops from triggering tab switch on the same tab over and over
+        if(e.target.innerText != domManipulator.getCurrentTab()) {      
+            
+            domManipulator.removeAllNodes();
 
         try {
+
+       // domManipulator.removeAllNodes();
         domManipulator.setCurrentTab(e.target.innerText);
         console.log(e.target.innerText);
         let func = tabFunctions[e.target.innerText.toLowerCase()];
+
         func();}
 
         catch {
-            
+
+            console.log(e);
+            console.log("error");
             return;
         }
 
@@ -42,7 +47,9 @@ const tabLogic = function() {
         return;
     }
        
-    }
+    }  
 
 }()
+
+
 

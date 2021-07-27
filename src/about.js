@@ -1,9 +1,12 @@
-import background from "./food2.jpg"
+import background from "./chef.jpg"
+import {domManipulator} from "./dom"
 
 let updateAbout = function() {
 
-    let content = document.querySelector("#content"); 
-    content.style.backgroundImage = `url(${background})`;
+    console.log("here")
+
+
+    domManipulator.getBody().style.backgroundImage = `url(${background})`;
 
 
 }
