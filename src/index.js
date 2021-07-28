@@ -14,8 +14,17 @@ const tabLogic = function() {
         "about": updateAbout,
     }
 
-  
-    domManipulator.getTabs().addEventListener("click", tabChange);
+    let tabTitles = ["Home", "Gallery", "About"];
+
+    for (let x = 0; x < 3; x++) {
+
+        let innerTab = document.createElement("div");
+        innerTab.classList.add("innerTab");
+        innerTab.innerText = tabTitles[x];
+        innerTab.id = tabTitles[x];
+        domManipulator.getTabs().append(innerTab);
+        innerTab.addEventListener("click", tabChange)
+    }
 
     function tabChange(e) {
 
@@ -24,7 +33,7 @@ const tabLogic = function() {
             
             domManipulator.removeAllNodes();
 
-        try {
+       
 
        // domManipulator.removeAllNodes();
         domManipulator.setCurrentTab(e.target.innerText);
@@ -33,14 +42,8 @@ const tabLogic = function() {
 
         func();}
 
-        catch {
 
-            console.log(e);
-            console.log("error");
-            return;
-        }
-
-    }
+  
 
     else {
 

@@ -4,9 +4,7 @@ import background from "./food.jpg";
 
 let updateGallery = function() {
 
-    domManipulator.getBody().style.backgroundImage = `url(${background})`;
-
-    
+    domManipulator.setBackground("content", background);    
 }
 
 export {updateGallery};

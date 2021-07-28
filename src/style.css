@@ -133,51 +133,44 @@ table {
     border-spacing: 0;
 }
 
-body {   
-   
+body {
+
     font-family: 'Courgette', cursive;
     font-size: 28px;
     background-color: #F5F5F5;
-    background-repeat: no-repeat;
-    background-size: cover;
-   
-
 }
 
 #content {
-  
-    display: grid; 
+
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 80px 1fr;
-    height: 100vh;
-    
+    grid-template-rows: 1fr 1fr;
+    min-height: 100vh;
+    background-size: cover;
 }
 
 #header {
-
-    grid-column: 1 / -1;
+    position: fixed;
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     color: #E3E8EA;
-   
 }
 
 #main {
 
-    grid-row: 2;
+    grid-row: 1;
     display: grid;
     border-style: solid white 2px;
     transition: all 0.5s ease-in-out;
-    grid-column: 2;
-    justify-self: start;
-    grid-template-columns: 1fr; 
-    color: #E3E8EA;
+    grid-column: 1;
+    justify-self: center;
+    align-self: center;
+    grid-template-columns: 1fr;
+    color: #FFFFFF;
     font-size: 24px;
-    line-height: 1.6;   
+    line-height: 1.6;
 }
-
-
 
 #tabs {
 
@@ -186,48 +179,182 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 6px;
     margin: 6px;
-
 }
 
 .innerTab {
 
-    cursor: pointer;
+
     display: grid;
     justify-content: center;
     align-content: center;
     justify-self: center;
     width: 100%;
     text-decoration: underline;
-    padding:20px;
+    padding: 20px;
 
 }
 
 .innerTab:hover {
 
-    color: #D37E39;
+    scale: 1.1;
+    cursor: pointer;
+
 }
-
-
 
 .mainAbout {
 
     grid-template-columns: 1fr 1fr;
-
 }
-
-
 
 .opacity {
 
     opacity: 0;
-
 }
 
 #aboutContent {
 
-    height:100vh;
+    min-height: 100vh;
     border-style: solid;
     border-width: 2px;
-   display: grid;
-   grid-template-rows: 1fr 1fr;
+    display: grid;
+    grid-template-rows: minmax(60vh, 1fr) 80vh 40vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row: 3;
+    grid-column: 1/-1;
+    background-color: #FFFFFF;
+}
+
+#aboutLeftBlock {
+
+    grid-column: 1;
+    grid-template-rows: 1fr 2fr;
+    border-style: solid;
+    border-width: 2px;
+    align-self: center;
+    align-content: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 18px;
+
+}
+
+#aboutTopBlock {
+
+    display: grid;
+    grid-row: 1;
+    grid-template-rows: 1fr 2fr;
+    border-width: 2px;
+    grid-column: 1/-1;
+    align-self: center;
+    align-content: center;
+    font-size: 18px;
+    line-height: 26px;
+    justify-content: center;
+    height: 100%;
+}
+
+#aboutCenter {
+    grid-column: 1/-1;
+    display: grid;
+    border-style: solid;
+    border-width: 2px;
+    align-self: center;
+    align-content: center;
+    background-color: #0E1111;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    height: 100%;
+}
+
+h2 {
+
+    justify-self: center;
+    align-self: center;
+}
+
+#mealItemTitle {
+
+    grid-row: 1;
+    grid-column: 1/-1;
+    color: white;
+    justify-self: center;
+    align-self: start;
+
+}
+
+.mealItem {
+
+    border-bottom: solid;
+    border-top: solid;
+    border-color: white;
+    border-width: 1px;
+    justify-self: center;
+    margin: 40px;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#aboutBottom {
+
+    grid-column: 1/-1;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+#aboutContact {
+
+
+    grid-column: 1;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-content: center;
+    align-items: center;
+    font-size: 18px;
+
+
+}
+
+#contactWrap {
+
+    grid-row:2;
+    justify-self: center;
+    display: grid;
+    grid-gap: 10px;
+}
+
+#aboutHours {
+
+
+    grid-column: 3;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-content: center;
+    align-items: center;
+    font-size: 18px;
+    justify-items: center;
+
+
+
+}
+
+#hourWrap {
+
+    grid-row: 2;
+
+
+}
+
+#aboutBottom img {
+
+    grid-column: 2;
+    grid-row: 1;
+    border-width: 2px;
+    align-self: center;
+    justify-self: center;
+    margin: 10px;
+
+
 }
