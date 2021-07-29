@@ -5,60 +5,66 @@ import {
 } from "./dom"
 import twitter from "./twitter.png"
 import insta from "./insta.png"
+import story from "./story.png"
+
 let updateAbout = function () {
 
     domManipulator.setBackground("content", background);
 
     let currentMenuItems = aboutHelpers.getMenu();
-    let ipsum = aboutHelpers.getIpsum();
+    let storyContent = aboutHelpers.getIpsum();
     let hours = aboutHelpers.getHours();
     let contactInfo = aboutHelpers.getContacts();
     let mainLogo = aboutHelpers.createImage(logo);
     let twitterLogo = aboutHelpers.createImage(twitter);
     let instaLogo = aboutHelpers.createImage(insta);
+    let storyLogo = aboutHelpers.createImage(story);
 
-    let aboutContent = domManipulator.createDiv("aboutContent");
-    document.body.appendChild(aboutContent);
-    aboutContent.appendChild(domManipulator.createDiv("aboutTopBlock"));
+    let storyLogoWrap = domManipulator.createDiv("storyLogoWrap");
+    storyLogoWrap.appendChild(storyLogo);
 
-    let topBlock = document.querySelector("#aboutTopBlock");
-    let topHeader = document.createElement("h2");
-    topHeader.innerText = "Our Story";
+    document.querySelector("#content").appendChild(storyLogoWrap);
 
-    let topPara = document.createElement("p");
-    topPara.innerText = ipsum;
-    topBlock.append(topHeader);
-    topBlock.append(topPara);
+    let aboutPageWrapper = domManipulator.createDiv("aboutPageWrapper");
+    document.body.appendChild(aboutPageWrapper);
+    aboutPageWrapper.appendChild(domManipulator.createDiv("aboutPageStory"));
 
-    let aboutCenter = domManipulator.createDiv("aboutCenter");
-    aboutContent.appendChild(aboutCenter);
+    let aboutPageStory = document.querySelector("#aboutPageStory");
+    let aboutStoryHeader = document.createElement("h2");
+    aboutStoryHeader.innerText = "Dignissim...";
 
-    aboutCenter.appendChild(domManipulator.createDiv("mealItemTitle"));
+    let aboutStoryText = document.createElement("p");
+    aboutStoryText.innerText = storyContent;
+    aboutPageStory.append(aboutStoryHeader);
+    aboutPageStory.append(aboutStoryText);
+
+    let aboutPageMenu = domManipulator.createDiv("aboutPageMenu");
+    aboutPageWrapper.appendChild(aboutPageMenu);
+
+    aboutPageMenu.appendChild(domManipulator.createDiv("mealItemTitle"));
     document.querySelector("#mealItemTitle").innerText = "Some favorites...";
 
-
-    for (let x = 0; x < currentMenuItems.length; x++) {
+    currentMenuItems.forEach((item) => {
 
         let currentMenuItem = domManipulator.createDivWithClass("mealItem");
-        aboutCenter.appendChild(currentMenuItem);
-        currentMenuItem.innerText = currentMenuItems[x];
-    }
+        aboutPageMenu.appendChild(currentMenuItem);
+        currentMenuItem.innerText = item;
+    })
 
+    aboutPageWrapper.appendChild(domManipulator.createDiv("aboutFooter"));
 
-    aboutContent.appendChild(domManipulator.createDiv("aboutBottom"));
+    let footerContent = ["aboutContact", "aboutHours", "logoWrapper"];
 
-    let bottomContent = ["aboutContact", "aboutHours", "logoWrapper"];
+    footerContent.forEach((id) => {
 
-    bottomContent.forEach((id) => {
-
-        domManipulator.appendViaQuery("#aboutBottom", domManipulator.createDiv(id))
+        domManipulator.appendViaQuery("#aboutFooter", domManipulator.createDiv(id))
 
     });
 
     domManipulator.appendViaQuery("#logoWrapper", mainLogo);
     domManipulator.appendViaQuery("#aboutContact", domManipulator.createDiv("contactWrap"));
     domManipulator.appendViaQuery("#aboutHours", domManipulator.createDiv("hourWrap"));
-    domManipulator.appendViaQuery("#aboutBottom", domManipulator.createDiv("icons"));
+    domManipulator.appendViaQuery("#aboutFooter", domManipulator.createDiv("icons"));
 
     let socialWrap = domManipulator.createDivWithClass("socialWrap");
     document.querySelector("#logoWrapper").appendChild(socialWrap);
@@ -89,6 +95,7 @@ let updateAbout = function () {
 let aboutHelpers = function () {
 
     let contactInfo = ["Email: lerestaurant@gmail.com", "Telephone: 08234666", "Address: 1 Posh Street, Posh Town"]
+
     let hours = ["Mon - Thurs: 11 - 9", "Fri - Sat: 9 - 11", "Sun: 12 - 8"]
 
     let ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
@@ -97,8 +104,14 @@ let aboutHelpers = function () {
      Ante in nibh mauris cursus mattis molestie. Quam pellentesque nec nam aliquam. 
      Viverra vitae congue eu consequat ac. Enim nunc faucibus a pellentesque sit amet porttitor. 
      Vitae congue eu consequat ac felis donec et odio pellentesque.
+     
     Ipsum nunc aliquet bibendum enim facilisis. Eu sem integer vitae justo eget magna fermentum iaculis eu.
      Tristique magna sit amet purus gravida quis blandit. Scelerisque varius morbi enim nunc faucibus. 
+     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Aliquam vestibulum morbi blandit cursus risus. Velit dignissim sodales ut eu sem integer vitae justo eget. 
+      Vivamus arcu felis bibendum ut tristique et egestas. Praesent tristique magna sit amet purus gravida quis blandit. 
+      Senectus et netus et malesuada fames ac turpis egestas sed. Enim ut sem viverra aliquet eget sit amet tellus cras.
+      Commodo odio aenean sed adipiscing diam donec. Eu mi bibendum neque egestas. Scelerisque eu ultrices vitae auctor.
      `
 
     let currentMenuItems = ["Cold Tomato Soup, Melon & Cucumber",

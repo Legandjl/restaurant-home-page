@@ -9,24 +9,10 @@ let domManipulator = function () {
     content.append(header);
     header.append(tabs);
 
-
-
-
     let setBackground = function (id, image) {
 
         document.querySelector(`#${id}`).style.backgroundImage = `url(${image})`;
-
-    }
-
-    let getBody = function () {
-
-        return document.body;
-    }
-
-    let getMain = function () {
-
-        return main;
-    }
+    } 
 
     let getTabs = function () {
 
@@ -47,36 +33,26 @@ let domManipulator = function () {
 
         return content;
     }
-
-    let getHeader = function () {
-
-        return header;
-    }
+  
 
     let createDiv = function (id) {
 
-        let newDiv = document.createElement("div");
-        console.log("generating div");
-        newDiv.id = id;
-        console.log(newDiv)
+        let newDiv = document.createElement("div");      
+        newDiv.id = id;    
         return newDiv;
     }
 
     let createDivWithClass = function (className) {
 
-        let newDiv = document.createElement("div");
-        console.log("generating div");
-        newDiv.classList.add(className);
-        console.log(newDiv)
+        let newDiv = document.createElement("div");       
+        newDiv.classList.add(className);        
         return newDiv;
     }
 
-    let appendViaQuery = function(element1, element2) {
+    let appendViaQuery = function (element1, element2) {
 
         document.querySelector(element1).append(element2);
     }
-
-
 
     let removeAllNodes = function () {
 
@@ -88,21 +64,18 @@ let domManipulator = function () {
 
                 getContent().removeChild(node);
             }
-        }))
+        }))        
 
         let nodes2 = document.body.childNodes;
 
-
         nodes2.forEach((node => {
 
-            if (node.id == "aboutContent") {
+            if (node.id == "aboutPageWrapper") {
 
                 document.body.removeChild(node);
                 console.log("here")
             }
         }))
-
-
     }
 
     let windowScroll = function () {
@@ -110,10 +83,25 @@ let domManipulator = function () {
         let prevScrollpos = window.pageYOffset;
         window.onscroll = function () {
             let currentScrollPos = window.pageYOffset;
+            console.log(currentScrollPos)
+
+            if(currentScrollPos > 0) {
+
+                document.querySelector("#storyLogoWrap").classList.add("opacity");
+            }
+
+            else {
+
+                document.querySelector("#storyLogoWrap").classList.remove("opacity");
+            }
+
             if (prevScrollpos > currentScrollPos) {
-                document.getElementById("header").style.opacity = "100";
+                document.querySelector("#header").classList.remove("opacity");
+             
+                console.log(document.querySelector("#header"))
             } else {
-                document.getElementById("header").style.opacity = "0";
+                document.querySelector("#header").classList.add("opacity");
+               
             }
             prevScrollpos = currentScrollPos;
         }
@@ -122,28 +110,21 @@ let domManipulator = function () {
 
     windowScroll();
 
-    //these elements will always be present on the page
-    //content wrapper and header
-
-
-
     return {
-        createDiv,
-        getMain,
+        createDiv,        
         setCurrentTab,
         getCurrentTab,
-        getContent,
-        getHeader,
+        getContent,       
         getTabs,
         removeAllNodes,
-        getBody,
         setBackground,
         createDivWithClass,
-         appendViaQuery
-    };
+        appendViaQuery
+    }
 
 }()
 
 export {
+    
     domManipulator
-};
+}
