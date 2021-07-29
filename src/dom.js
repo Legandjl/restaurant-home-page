@@ -3,13 +3,16 @@ let domManipulator = function () {
     let currentTab = "home";
     let content = document.querySelector("#content");
     let header = document.createElement("div");
-    header.id = "header";   
+    header.id = "header";
     let tabs = document.createElement("div");
     tabs.id = "tabs";
     content.append(header);
     header.append(tabs);
 
-    let setBackground = function(id, image) {
+
+
+
+    let setBackground = function (id, image) {
 
         document.querySelector(`#${id}`).style.backgroundImage = `url(${image})`;
 
@@ -67,8 +70,13 @@ let domManipulator = function () {
         console.log(newDiv)
         return newDiv;
     }
-    
-    
+
+    let appendViaQuery = function(element1, element2) {
+
+        document.querySelector(element1).append(element2);
+    }
+
+
 
     let removeAllNodes = function () {
 
@@ -90,12 +98,29 @@ let domManipulator = function () {
             if (node.id == "aboutContent") {
 
                 document.body.removeChild(node);
-                 console.log("here")
+                console.log("here")
             }
         }))
 
 
     }
+
+    let windowScroll = function () {
+
+        let prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            let currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("header").style.opacity = "100";
+            } else {
+                document.getElementById("header").style.opacity = "0";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
+    }
+
+    windowScroll();
 
     //these elements will always be present on the page
     //content wrapper and header
@@ -113,7 +138,8 @@ let domManipulator = function () {
         removeAllNodes,
         getBody,
         setBackground,
-        createDivWithClass
+        createDivWithClass,
+         appendViaQuery
     };
 
 }()

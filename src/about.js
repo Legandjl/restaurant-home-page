@@ -3,8 +3,93 @@ import logo from "./logo(1).png"
 import {
     domManipulator
 } from "./dom"
-
+import twitter from "./twitter.png"
+import insta from "./insta.png"
 let updateAbout = function () {
+
+    domManipulator.setBackground("content", background);
+
+    let currentMenuItems = aboutHelpers.getMenu();
+    let ipsum = aboutHelpers.getIpsum();
+    let hours = aboutHelpers.getHours();
+    let contactInfo = aboutHelpers.getContacts();
+    let mainLogo = aboutHelpers.createImage(logo);
+    let twitterLogo = aboutHelpers.createImage(twitter);
+    let instaLogo = aboutHelpers.createImage(insta);
+
+    let aboutContent = domManipulator.createDiv("aboutContent");
+    document.body.appendChild(aboutContent);
+    aboutContent.appendChild(domManipulator.createDiv("aboutTopBlock"));
+
+    let topBlock = document.querySelector("#aboutTopBlock");
+    let topHeader = document.createElement("h2");
+    topHeader.innerText = "Our Story";
+
+    let topPara = document.createElement("p");
+    topPara.innerText = ipsum;
+    topBlock.append(topHeader);
+    topBlock.append(topPara);
+
+    let aboutCenter = domManipulator.createDiv("aboutCenter");
+    aboutContent.appendChild(aboutCenter);
+
+    aboutCenter.appendChild(domManipulator.createDiv("mealItemTitle"));
+    document.querySelector("#mealItemTitle").innerText = "Some favorites...";
+
+
+    for (let x = 0; x < currentMenuItems.length; x++) {
+
+        let currentMenuItem = domManipulator.createDivWithClass("mealItem");
+        aboutCenter.appendChild(currentMenuItem);
+        currentMenuItem.innerText = currentMenuItems[x];
+    }
+
+
+    aboutContent.appendChild(domManipulator.createDiv("aboutBottom"));
+
+    let bottomContent = ["aboutContact", "aboutHours", "logoWrapper"];
+
+    bottomContent.forEach((id) => {
+
+        domManipulator.appendViaQuery("#aboutBottom", domManipulator.createDiv(id))
+
+    });
+
+    domManipulator.appendViaQuery("#logoWrapper", mainLogo);
+    domManipulator.appendViaQuery("#aboutContact", domManipulator.createDiv("contactWrap"));
+    domManipulator.appendViaQuery("#aboutHours", domManipulator.createDiv("hourWrap"));
+    domManipulator.appendViaQuery("#aboutBottom", domManipulator.createDiv("icons"));
+
+    let socialWrap = domManipulator.createDivWithClass("socialWrap");
+    document.querySelector("#logoWrapper").appendChild(socialWrap);
+
+    let mediaIcons = [twitterLogo, instaLogo];
+
+    mediaIcons.forEach((icon) => {
+
+        domManipulator.appendViaQuery(".socialWrap", icon)
+    });
+
+    contactInfo.forEach((item) => {
+
+        let currentContact = domManipulator.createDivWithClass("contactItem");
+        currentContact.innerText = item;
+        document.querySelector("#contactWrap").appendChild(currentContact);
+    });
+
+
+    hours.forEach((item) => {
+
+        let currentItem = domManipulator.createDivWithClass("hourItem");
+        currentItem.innerText = item;
+        document.querySelector("#hourWrap").appendChild(currentItem);
+    });
+}
+
+let aboutHelpers = function () {
+
+    let contactInfo = ["Email: lerestaurant@gmail.com", "Telephone: 08234666", "Address: 1 Posh Street, Posh Town"]
+    let hours = ["Mon - Thurs: 11 - 9", "Fri - Sat: 9 - 11", "Sun: 12 - 8"]
 
     let ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
      Quisque id diam vel quam elementum pulvinar etiam non quam. In pellentesque massa placerat duis ultricies lacus sed.
@@ -27,69 +112,42 @@ let updateAbout = function () {
         "Dorset Blue Lobster, Samphire & Lobster Butter"
     ]
 
-    let contactInfo = ["Email: lerestaurant@gmail.com", "Telephone: 08234666", "Address: 1 Posh Street, Posh Town"]
-    let hours = ["Mon - Thurs: 11 - 9", "Fri - Sat: 9 - 11", "Sun: 12 - 8"]
+    let getIpsum = () => {
 
-    domManipulator.setBackground("content", background);
-    let aboutContent = domManipulator.createDiv("aboutContent");
-    document.body.appendChild(aboutContent);
-    aboutContent.appendChild(domManipulator.createDiv("aboutTopBlock"));
-
-    let topBlock = document.querySelector("#aboutTopBlock");
-    let topHeader = document.createElement("h2");
-    topHeader.innerText = "Our Story";
-    let topPara = document.createElement("p");
-    topPara.innerText = ipsum;
-    topBlock.append(topHeader);
-    topBlock.append(topPara);
-
-    let aboutCenter = domManipulator.createDiv("aboutCenter");
-    aboutContent.appendChild(aboutCenter);
-
-    aboutCenter.appendChild(domManipulator.createDiv("mealItemTitle"));
-    document.querySelector("#mealItemTitle").innerText = "Some favorites..."
-
-
-    for (let x = 0; x < currentMenuItems.length; x++) {
-
-        let currentMenuItem = domManipulator.createDivWithClass("mealItem");
-        aboutCenter.appendChild(currentMenuItem);
-        currentMenuItem.innerText = currentMenuItems[x];
+        return ipsum;
     }
 
+    let getMenu = () => {
 
-    aboutContent.appendChild(domManipulator.createDiv("aboutBottom"));
-    document.querySelector("#aboutBottom").appendChild(domManipulator.createDiv("aboutContact"));
-    document.querySelector("#aboutBottom").appendChild(domManipulator.createDiv("aboutHours"));
+        return currentMenuItems;
+    }
 
-    let logo2 = new Image();
-    logo2.src = logo;
-    document.querySelector("#aboutBottom").appendChild(logo2);
-    document.querySelector("#aboutContact").appendChild(domManipulator.createDiv("contactWrap"));
-    document.querySelector("#aboutHours").appendChild(domManipulator.createDiv("hourWrap"));
+    let getContacts = () => {
 
-    contactInfo.forEach((item => {
+        return contactInfo;
+    }
 
-        let currentContact = domManipulator.createDivWithClass("contactItem");
-        currentContact.innerText = item;
-        document.querySelector("#contactWrap").appendChild(currentContact);
-    }))
+    let getHours = () => {
 
+        return hours;
+    }
 
-    hours.forEach((item => {
+    let createImage = function (imgSrc) {
 
-        let currentItem = domManipulator.createDivWithClass("hourItem");
-        currentItem.innerText = item;
-        document.querySelector("#hourWrap").appendChild(currentItem);
-    }))
+        let newImage = new Image();
+        newImage.src = imgSrc;
+        return newImage;
+    }
 
+    return {
+        createImage,
+        getIpsum,
+        getMenu,
+        getContacts,
+        getHours
+    }
 
-
-
-
-
-
-}
+}()
 
 
 export {
