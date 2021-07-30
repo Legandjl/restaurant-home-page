@@ -13,11 +13,6 @@ let updateAbout = function () {
 
     let currentMenuItems = aboutHelpers.getMenu();
     let storyContent = aboutHelpers.getIpsum();
-    let hours = aboutHelpers.getHours();
-    let contactInfo = aboutHelpers.getContacts();
-    let mainLogo = aboutHelpers.createImage(logo);
-    let twitterLogo = aboutHelpers.createImage(twitter);
-    let instaLogo = aboutHelpers.createImage(insta);
     let storyLogo = aboutHelpers.createImage(story);
 
     let storyLogoWrap = domManipulator.createDiv("storyLogoWrap");
@@ -52,55 +47,10 @@ let updateAbout = function () {
     })
 
     //footer
-    
-
-    aboutPageWrapper.appendChild(domManipulator.createDiv("aboutFooter"));
-
-    let footerContent = ["aboutContact", "aboutHours", "logoWrapper"];
-
-    footerContent.forEach((id) => {
-
-        domManipulator.appendViaQuery("#aboutFooter", domManipulator.createDiv(id))
-
-    });
-
-    domManipulator.appendViaQuery("#logoWrapper", mainLogo);
-    domManipulator.appendViaQuery("#aboutContact", domManipulator.createDiv("contactWrap"));
-    domManipulator.appendViaQuery("#aboutHours", domManipulator.createDiv("hourWrap"));
-    domManipulator.appendViaQuery("#aboutFooter", domManipulator.createDiv("icons"));
-
-    let socialWrap = domManipulator.createDivWithClass("socialWrap");
-    document.querySelector("#logoWrapper").appendChild(socialWrap);
-
-    let mediaIcons = [twitterLogo, instaLogo];
-
-    mediaIcons.forEach((icon) => {
-
-        domManipulator.appendViaQuery(".socialWrap", icon)
-    });
-
-    contactInfo.forEach((item) => {
-
-        let currentContact = domManipulator.createDivWithClass("contactItem");
-        currentContact.innerText = item;
-        document.querySelector("#contactWrap").appendChild(currentContact);
-    });
-
-
-    hours.forEach((item) => {
-
-        let currentItem = domManipulator.createDivWithClass("hourItem");
-        currentItem.innerText = item;
-        document.querySelector("#hourWrap").appendChild(currentItem);
-    });
-    
+    aboutPageWrapper.appendChild(domManipulator.getFooter());
 }
 
 let aboutHelpers = function () {
-
-    let contactInfo = ["Email: lerestaurant@gmail.com", "Telephone: 08234666", "Address: 1 Posh Street, Posh Town"]
-
-    let hours = ["Mon - Thurs: 11 - 9", "Fri - Sat: 9 - 11", "Sun: 12 - 8"]
 
     let ipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
      Quisque id diam vel quam elementum pulvinar etiam non quam. In pellentesque massa placerat duis ultricies lacus sed.
@@ -156,12 +106,14 @@ let aboutHelpers = function () {
         return newImage;
     }
 
+
     return {
         createImage,
         getIpsum,
         getMenu,
         getContacts,
-        getHours
+        getHours,
+        
     }
 
 }()
