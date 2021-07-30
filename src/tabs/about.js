@@ -1,10 +1,7 @@
 import background from "../images/chef.jpg"
-import logo from "../images/logo(1).png"
 import {
     domManipulator
 } from "../dom"
-import twitter from "../images/twitter.png"
-import insta from "../images/insta.png"
 import story from "../images/story.png"
 
 let updateAbout = function () {
@@ -13,7 +10,7 @@ let updateAbout = function () {
 
     let currentMenuItems = aboutHelpers.getMenu();
     let storyContent = aboutHelpers.getIpsum();
-    let storyLogo = aboutHelpers.createImage(story);
+    let storyLogo = domManipulator.createImage(story);
 
     let storyLogoWrap = domManipulator.createDiv("storyLogoWrap");
     storyLogoWrap.appendChild(storyLogo);
@@ -45,8 +42,7 @@ let updateAbout = function () {
         aboutPageMenu.appendChild(currentMenuItem);
         currentMenuItem.innerText = item;
     })
-
-    //footer
+   
     aboutPageWrapper.appendChild(domManipulator.getFooter());
 }
 
@@ -89,31 +85,11 @@ let aboutHelpers = function () {
         return currentMenuItems;
     }
 
-    let getContacts = () => {
-
-        return contactInfo;
-    }
-
-    let getHours = () => {
-
-        return hours;
-    }
-
-    let createImage = function (imgSrc) {
-
-        let newImage = new Image();
-        newImage.src = imgSrc;
-        return newImage;
-    }
-
-
     return {
-        createImage,
+
         getIpsum,
         getMenu,
-        getContacts,
-        getHours,
-        
+
     }
 
 }()

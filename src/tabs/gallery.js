@@ -30,6 +30,10 @@ let updateGallery = function() {
 
     }
 
+    let footer = domManipulator.getFooter();
+    console.log(footer);
+  document.querySelector("#galleryWrapper").appendChild(footer);
+
     /*
 
  

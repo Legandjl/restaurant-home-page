@@ -140,7 +140,7 @@ let domManipulator = function () {
         let twitterLogo = createImage(twitter);
         let instaLogo = createImage(insta);
 
-        let footer = domManipulator.createDiv("aboutFooter");
+        let footer = domManipulator.createDiv("footer");
 
         let footerContent = ["aboutContact", "aboutHours", "logoWrapper"];
 
@@ -188,6 +188,8 @@ let domManipulator = function () {
             hourWrap.appendChild(currentItem);
         });
 
+        console.log("playing football")
+
         return footer;
 
     }
@@ -204,7 +206,8 @@ let domManipulator = function () {
         setBackground,
         createDivWithClass,
         appendViaQuery,
-        getFooter
+        getFooter,
+        createImage
     }
 
 }()
