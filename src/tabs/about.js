@@ -1,11 +1,11 @@
-import background from "./chef.jpg"
-import logo from "./logo(1).png"
+import background from "../images/chef.jpg"
+import logo from "../images/logo(1).png"
 import {
     domManipulator
-} from "./dom"
-import twitter from "./twitter.png"
-import insta from "./insta.png"
-import story from "./story.png"
+} from "../dom"
+import twitter from "../images/twitter.png"
+import insta from "../images/insta.png"
+import story from "../images/story.png"
 
 let updateAbout = function () {
 

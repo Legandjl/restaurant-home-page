@@ -1,4 +1,4 @@
-import background from "./burger.jpg"
+import background from "./images/burger.jpg"
 import {
     domManipulator
 } from "./dom"

@@ -1,8 +1,8 @@
 import "./style.css";
 import {pageLoader} from "./loader"
 import {updateHome} from "./home"
-import {updateGallery} from "./gallery"
-import {updateAbout} from "./about"
+import {updateGallery} from "./tabs/gallery"
+import {updateAbout} from "./tabs/about"
 import {domManipulator} from "./dom"
 
 const tabLogic = function() {
