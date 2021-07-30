@@ -51,6 +51,9 @@ let updateAbout = function () {
         currentMenuItem.innerText = item;
     })
 
+    //footer
+    
+
     aboutPageWrapper.appendChild(domManipulator.createDiv("aboutFooter"));
 
     let footerContent = ["aboutContact", "aboutHours", "logoWrapper"];
@@ -90,6 +93,7 @@ let updateAbout = function () {
         currentItem.innerText = item;
         document.querySelector("#hourWrap").appendChild(currentItem);
     });
+    
 }
 
 let aboutHelpers = function () {

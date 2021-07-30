@@ -149,7 +149,7 @@ body {
     background-size: cover;
 }
 
-#storyLogoWrap{
+#storyLogoWrap {
 
     grid-column: 2;
     grid-row: 2;
@@ -161,13 +161,13 @@ body {
 
 #storyLogoWrap img {
 
-    width:400px;
-    height:auto;
+    width: 400px;
+    height: auto;
 }
 
 #header {
     position: fixed;
-    
+
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
@@ -177,7 +177,8 @@ body {
     transition: all 0.5s ease-in-out;
 }
 
-#header, #storyLogoWrap {
+#header,
+#storyLogoWrap {
 
     transition: all 0.5s ease-in-out;
 }
@@ -234,7 +235,7 @@ body {
 
 .opacity {
 
-     opacity: 0 !important;
+    opacity: 0 !important;
 }
 
 #aboutPageWrapper {
@@ -268,9 +269,9 @@ body {
     line-height: 26px;
     justify-content: center;
     height: 100%;
-    margin:40px;
-    margin-top:0px;
-    grid-gap:30px;
+    margin: 40px;
+    margin-top: 0px;
+    grid-gap: 30px;
 }
 
 #aboutPageMenu {
@@ -323,12 +324,11 @@ h2 {
     grid-template-rows: 1fr auto;
     background-color: #EEEEEE;
     font-family: 'Raleway', sans-serif;
-    height:30vh;
+    height: 30vh;
 
 }
 
 #aboutContact {
-
 
     grid-column: 1;
     display: grid;
@@ -336,9 +336,6 @@ h2 {
     align-content: center;
     align-items: center;
     font-size: 18px;
-
-
-
 }
 
 #contactWrap {
@@ -351,7 +348,6 @@ h2 {
 
 #aboutHours {
 
-
     grid-column: 3;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
@@ -359,16 +355,11 @@ h2 {
     align-items: center;
     font-size: 18px;
     justify-items: center;
-
-
-
 }
 
 #hourWrap {
 
     grid-row: 2;
-
-
 }
 
 #logoWrapper {
@@ -384,7 +375,6 @@ h2 {
     justify-content: center;
     grid-gap: 20px;
 
-
 }
 
 .socialWrap {
@@ -399,6 +389,57 @@ h2 {
 
     cursor: pointer;
 
+}
 
+#galleryWrapper {
 
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    grid-auto-rows: 1fr;
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    grid-auto-flow: dense;
+    height: 100vh;
+
+}
+
+#galleryWrapper img {
+
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+
+}
+
+.galleryDiv {
+
+    display: grid;
+    grid-column: 1/-1;
+}
+
+#image0 {
+
+    grid-column: span 2;
+}
+
+#image1 {
+
+    grid-column: span 2;
+}
+
+#image2 {
+
+    grid-column: 1;
+}
+
+#image3 {
+
+    grid-column: span 3;
+
+}
+
+#image4 {
+
+    grid-column: 1/-1;
 }

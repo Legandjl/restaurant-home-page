@@ -58,6 +58,8 @@ let domManipulator = function () {
 
         let nodes = getContent().childNodes;
 
+        console.log(nodes);
+
         nodes.forEach((node => {
             console.log(node.id);
             if (node.id != "header") {
@@ -85,6 +87,8 @@ let domManipulator = function () {
             let currentScrollPos = window.pageYOffset;
             console.log(currentScrollPos)
 
+            if(document.querySelector("#storyLogoWrap") != null) {
+
             if(currentScrollPos > 0) {
 
                 document.querySelector("#storyLogoWrap").classList.add("opacity");
@@ -94,6 +98,8 @@ let domManipulator = function () {
 
                 document.querySelector("#storyLogoWrap").classList.remove("opacity");
             }
+
+        }
 
             if (prevScrollpos > currentScrollPos) {
                 document.querySelector("#header").classList.remove("opacity");
@@ -105,6 +111,9 @@ let domManipulator = function () {
             }
             prevScrollpos = currentScrollPos;
         }
+
+
+        
 
     }
 
