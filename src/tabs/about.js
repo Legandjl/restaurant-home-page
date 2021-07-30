@@ -4,10 +4,11 @@ import {
 } from "../dom"
 import story from "../images/story.png"
 
-let updateAbout = function () {
+
+
+let updateAbout = function () { 
 
     domManipulator.setBackground("content", background);
-
     let currentMenuItems = aboutHelpers.getMenu();
     let storyContent = aboutHelpers.getIpsum();
     let storyLogo = domManipulator.createImage(story);
@@ -19,6 +20,7 @@ let updateAbout = function () {
 
     let aboutPageWrapper = domManipulator.createDiv("aboutPageWrapper");
     document.body.appendChild(aboutPageWrapper);
+  
     aboutPageWrapper.appendChild(domManipulator.createDiv("aboutPageStory"));
 
     let aboutPageStory = document.querySelector("#aboutPageStory");
@@ -43,7 +45,8 @@ let updateAbout = function () {
         currentMenuItem.innerText = item;
     })
    
-    aboutPageWrapper.appendChild(domManipulator.getFooter());
+    aboutPageWrapper.appendChild(domManipulator.getFooter());    
+
 }
 
 let aboutHelpers = function () {

@@ -2,7 +2,6 @@ import twitter from "./images/twitter.png"
 import insta from "./images/insta.png"
 import logo from "./images/logo(1).png"
 
-
 let domManipulator = function () {
 
     let currentTab = "home";
@@ -13,206 +12,219 @@ let domManipulator = function () {
     tabs.id = "tabs";
     content.append(header);
     header.append(tabs);
+    header.addEventListener("mouseenter", showHeader);
 
-    let setBackground = function (id, image) {
 
-        document.querySelector(`#${id}`).style.backgroundImage = `url(${image})`;
-    } 
 
-    let getTabs = function () {
+let setBackground = function (id, image) {
 
-        return tabs;
-    }
+    document.querySelector(`#${id}`).style.backgroundImage = `url(${image})`;
+}
 
-    let setCurrentTab = function (tab) {
+let getTabs = function () {
 
-        currentTab = tab;
-    }
+    return tabs;
+}
 
-    let getCurrentTab = function () {
+let setCurrentTab = function (tab) {
 
-        return currentTab;
-    }
+    currentTab = tab;
+}
 
-    let getContent = function () {
+let getCurrentTab = function () {
 
-        return content;
-    }
-  
+    return currentTab;
+}
 
-    let createDiv = function (id) {
+let getContent = function () {
 
-        let newDiv = document.createElement("div");      
-        newDiv.id = id;    
-        return newDiv;
-    }
+    return content;
+}
 
-    let createDivWithClass = function (className) {
 
-        let newDiv = document.createElement("div");       
-        newDiv.classList.add(className);        
-        return newDiv;
-    }
+let createDiv = function (id) {
 
-    let appendViaQuery = function (element1, element2) {
+    let newDiv = document.createElement("div");
+    newDiv.id = id;
+    return newDiv;
+}
 
-        document.querySelector(element1).append(element2);
-    }
+let createDivWithClass = function (className) {
 
-    let removeAllNodes = function () {
+    let newDiv = document.createElement("div");
+    newDiv.classList.add(className);
+    return newDiv;
+}
 
-        let nodes = getContent().childNodes;
+let appendViaQuery = function (element1, element2) {
 
-        console.log(nodes);
+    document.querySelector(element1).append(element2);
+}
 
-        nodes.forEach((node => {
-            console.log(node.id);
-            if (node.id != "header") {
+let removeAllNodes = function () {
 
-                getContent().removeChild(node);
-            }
-        }))        
+    let nodes = getContent().childNodes;
+    getContent().style.backgroundImg = "white";
 
-        let nodes2 = document.body.childNodes;
+    console.log(nodes);
 
-        nodes2.forEach((node => {
+    nodes.forEach((node => {
+        console.log(node.id);
+        if (node.id != "header") {
 
-            if (node.id == "aboutPageWrapper") {
+            getContent().removeChild(node);
+        }
+    }))
 
-                document.body.removeChild(node);
-                console.log("here")
-            }
-        }))
-    }
+    let nodes2 = document.body.childNodes;
 
-    let windowScroll = function () {
+    nodes2.forEach((node => {
 
-        let prevScrollpos = window.pageYOffset;
-        window.onscroll = function () {
-            let currentScrollPos = window.pageYOffset;
-            console.log(currentScrollPos)
+        if (node.id == "aboutPageWrapper") {
 
-            if(document.querySelector("#storyLogoWrap") != null) {
+            document.body.removeChild(node);
+            console.log("here")
+        }
+    }))
+}
 
-            if(currentScrollPos > 0) {
+let windowScroll = function () {
+
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+        let currentScrollPos = window.pageYOffset;
+        console.log(currentScrollPos)
+
+        if (document.querySelector("#storyLogoWrap") != null) {
+
+            if (currentScrollPos > 0) {
 
                 document.querySelector("#storyLogoWrap").classList.add("opacity");
-            }
-
-            else {
+            } else {
 
                 document.querySelector("#storyLogoWrap").classList.remove("opacity");
             }
 
         }
 
-            if (prevScrollpos > currentScrollPos) {
-                document.querySelector("#header").classList.remove("opacity");
-             
-                console.log(document.querySelector("#header"))
-            } else {
-                document.querySelector("#header").classList.add("opacity");
-               
-            }
-            prevScrollpos = currentScrollPos;
+        if (prevScrollpos > currentScrollPos) {
+            document.querySelector("#header").classList.remove("opacity");
+
+            console.log(document.querySelector("#header"))
+        } else {
+            document.querySelector("#header").classList.add("opacity");
+
         }
-
-
-        
-
+        prevScrollpos = currentScrollPos;
     }
+}
 
+let createImage = function (imgSrc) {
 
-    let createImage = function (imgSrc) {
+    let newImage = new Image();
+    newImage.src = imgSrc;
+    return newImage;
+}
 
-        let newImage = new Image();
-        newImage.src = imgSrc;
-        return newImage;
-    }
+let getFooter = function () {
 
-    let getFooter = function () {
+    let contactInfo = ["Email: lerestaurant@gmail.com", "Telephone: 08234666", "Address: 1 Posh Street, Posh Town"]
 
-        let contactInfo = ["Email: lerestaurant@gmail.com", "Telephone: 08234666", "Address: 1 Posh Street, Posh Town"]
+    let hours = ["Mon - Thurs: 11 - 9", "Fri - Sat: 9 - 11", "Sun: 12 - 8"]
 
-        let hours = ["Mon - Thurs: 11 - 9", "Fri - Sat: 9 - 11", "Sun: 12 - 8"]
+    let mainLogo = createImage(logo);
+    let twitterLogo = createImage(twitter);
+    let instaLogo = createImage(insta);
+
+    let footer = domManipulator.createDiv("footer");
+
+    let footerContent = ["aboutContact", "aboutHours", "logoWrapper"];
+
+    footerContent.forEach((id) => {
+
+        footer.append(domManipulator.createDiv(id))
+    });
+
+    let footerChildren = footer.childNodes;
+
+    let contactDiv = footerChildren[0];
+    let hourDiv = footerChildren[1];
+    let logoDiv = footerChildren[2];
+
+    let contactInner = domManipulator.createDiv("contactWrap");
+    contactDiv.appendChild(contactInner);
+
+    let hourWrap = domManipulator.createDiv("hourWrap");
+    hourDiv.appendChild(hourWrap);
+
+    logoDiv.appendChild(mainLogo);
+    footer.appendChild(domManipulator.createDiv("icons"));
+
+    let socialWrap = domManipulator.createDivWithClass("socialWrap");
+    logoDiv.appendChild(socialWrap);
+
+    let mediaIcons = [twitterLogo, instaLogo];
+
+    mediaIcons.forEach((icon) => {
+
+        socialWrap.appendChild(icon);
+    });
+
+    contactInfo.forEach((item) => {
+
+        let currentContact = domManipulator.createDivWithClass("contactItem");
+        currentContact.innerText = item;
+        contactInner.appendChild(currentContact);
+    });
+
+    hours.forEach((item) => {
+
+        let currentItem = domManipulator.createDivWithClass("hourItem");
+        currentItem.innerText = item;
+        hourWrap.appendChild(currentItem);
+    });
+
      
-        let mainLogo = createImage(logo);
-        let twitterLogo = createImage(twitter);
-        let instaLogo = createImage(insta);
 
-        let footer = domManipulator.createDiv("footer");
+    return footer;
 
-        let footerContent = ["aboutContact", "aboutHours", "logoWrapper"];
+}
 
-        footerContent.forEach((id) => {
+function showHeader() {
 
-            footer.append(domManipulator.createDiv(id))
-        });
+    if (header.classList.contains("opacity")) {
 
-        let footerChildren = footer.childNodes;
+        header.classList.remove("opacity");
 
-        let contactDiv = footerChildren[0];
-        let hourDiv = footerChildren[1];
-        let logoDiv = footerChildren[2];
+        header.addEventListener("mouseleave", function () {               
 
-        let contactInner = domManipulator.createDiv("contactWrap");
-        contactDiv.appendChild(contactInner);
+            if (!header.classList.contains("opacity") && window.pageYOffset > 0) {
 
-        let hourWrap = domManipulator.createDiv("hourWrap");
-        hourDiv.appendChild(hourWrap);
-
-        logoDiv.appendChild(mainLogo);
-        footer.appendChild(domManipulator.createDiv("icons"));
-
-        let socialWrap = domManipulator.createDivWithClass("socialWrap");
-        logoDiv.appendChild(socialWrap);
-
-        let mediaIcons = [twitterLogo, instaLogo];
-
-        mediaIcons.forEach((icon) => {
-
-            socialWrap.appendChild(icon);
-        });
-
-        contactInfo.forEach((item) => {
-
-            let currentContact = domManipulator.createDivWithClass("contactItem");
-            currentContact.innerText = item;
-            contactInner.appendChild(currentContact);
-        });
-
-        hours.forEach((item) => {
-
-            let currentItem = domManipulator.createDivWithClass("hourItem");
-            currentItem.innerText = item;
-            hourWrap.appendChild(currentItem);
-        });
-
-        console.log("playing football")
-
-        return footer;
-
+                header.classList.add("opacity");
+            }
+        })
     }
+}
 
-    windowScroll();
+windowScroll();
 
-    return {
-        createDiv,        
-        setCurrentTab,
-        getCurrentTab,
-        getContent,       
-        getTabs,
-        removeAllNodes,
-        setBackground,
-        createDivWithClass,
-        appendViaQuery,
-        getFooter,
-        createImage
-    }
+return {
+    createDiv,
+    setCurrentTab,
+    getCurrentTab,
+    getContent,
+    getTabs,
+    removeAllNodes,
+    setBackground,
+    createDivWithClass,
+    appendViaQuery,
+    getFooter,
+    createImage
+}
 
 }()
 
 export {
-    
+
     domManipulator
 }

@@ -1,15 +1,13 @@
-import { domManipulator } from "../dom";
-import background from "../images/food.jpg";
+import {
+    domManipulator
+} from "../dom";
 import firstImage from "../images/gallery1.jpg"
 import secondImage from "../images/gallery2.jpg"
 import thirdImage from "../images/gallery3.jpg"
 import fourthImage from "../images/gallery4.jpg"
 import fifthImage from "../images/gallery5.jpg"
 
-
-let updateGallery = function() {
-
-   
+let updateGallery = function () {
 
     let galleryWrapper = domManipulator.createDiv("galleryWrapper");
 
@@ -17,10 +15,9 @@ let updateGallery = function() {
 
     domManipulator.getContent().appendChild(galleryWrapper);
 
-
     let images = [firstImage, secondImage, thirdImage, fourthImage, fifthImage];
 
-    for (let x = 0; x < images.length; x ++) {
+    for (let x = 0; x < images.length; x++) {
 
         let currentImage = new Image();
         currentImage.src = images[x];
@@ -32,24 +29,9 @@ let updateGallery = function() {
 
     let footer = domManipulator.getFooter();
     console.log(footer);
-  document.querySelector("#galleryWrapper").appendChild(footer);
-
-    /*
-
- 
-    document.querySelector("#galleryWrapper").appendChild(img2);
-
-    document.querySelector("#galleryWrapper").appendChild(img3);
-    document.querySelector("#galleryWrapper").appendChild(img4);
-
-    document.querySelector("#galleryWrapper").appendChild(img5);
-
-    */
-
-
-    
-    
- 
+    document.querySelector("#galleryWrapper").appendChild(footer);
 }
 
-export {updateGallery};
+export {
+    updateGallery
+};

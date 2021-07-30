@@ -1,10 +1,8 @@
 const path = require('path');
 
-
 module.exports = {
 
   mode: "development",
-
 
   entry: {
 
@@ -17,7 +15,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
 
   },
-
 
   module: {
 
