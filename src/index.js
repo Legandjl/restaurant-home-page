@@ -1,10 +1,8 @@
 import "./style.css";
-import {
-    pageLoader
-} from "./loader"
+import pageLoader from "./tabs/loader"
 import {
     updateHome
-} from "./home"
+} from "./tabs/home"
 import {
     updateGallery
 } from "./tabs/gallery"
@@ -14,8 +12,6 @@ import {
 import {
     domManipulator
 } from "./dom"
-
-
 
 const tabLogic = function () {
 
@@ -44,11 +40,9 @@ const tabLogic = function () {
         if (e.target.innerText != domManipulator.getCurrentTab()) {          
 
             domManipulator.removeAllNodes();
-            domManipulator.setCurrentTab(e.target.innerText);
-            console.log(e.target.innerText);
+            domManipulator.setCurrentTab(e.target.innerText);          
             let func = tabFunctions[e.target.innerText.toLowerCase()];      
-            func();     
-            
+            func();                 
           
 
         } else {

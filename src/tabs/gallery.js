@@ -11,7 +11,7 @@ let updateGallery = function () {
 
     let galleryWrapper = domManipulator.createDiv("galleryWrapper");
 
-    console.log(galleryWrapper)
+
 
     domManipulator.getContent().appendChild(galleryWrapper);
 
@@ -28,7 +28,7 @@ let updateGallery = function () {
     }
 
     let footer = domManipulator.getFooter();
-    console.log(footer);
+
     document.querySelector("#galleryWrapper").appendChild(footer);
 }
 

@@ -14,8 +14,6 @@ let domManipulator = function () {
     header.append(tabs);
     header.addEventListener("mouseenter", showHeader);
 
-
-
 let setBackground = function (id, image) {
 
     document.querySelector(`#${id}`).style.backgroundImage = `url(${image})`;
@@ -66,10 +64,10 @@ let removeAllNodes = function () {
     let nodes = getContent().childNodes;
     getContent().style.backgroundImg = "white";
 
-    console.log(nodes);
+   
 
     nodes.forEach((node => {
-        console.log(node.id);
+       
         if (node.id != "header") {
 
             getContent().removeChild(node);
@@ -83,7 +81,7 @@ let removeAllNodes = function () {
         if (node.id == "aboutPageWrapper") {
 
             document.body.removeChild(node);
-            console.log("here")
+           
         }
     }))
 }
@@ -93,7 +91,7 @@ let windowScroll = function () {
     let prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
         let currentScrollPos = window.pageYOffset;
-        console.log(currentScrollPos)
+      
 
         if (document.querySelector("#storyLogoWrap") != null) {
 
@@ -110,7 +108,6 @@ let windowScroll = function () {
         if (prevScrollpos > currentScrollPos) {
             document.querySelector("#header").classList.remove("opacity");
 
-            console.log(document.querySelector("#header"))
         } else {
             document.querySelector("#header").classList.add("opacity");
 
